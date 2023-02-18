@@ -5,6 +5,7 @@ import EditRegistration from './components/EditRegistration';
 import LoginRegister from './components/LoginRegister';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Login from './components/Login';
+import NewSignUp from './components/NewSignUp';
 
 
 
@@ -17,7 +18,7 @@ function App() {
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Login />} />
-              <Route path="/register" element={<LoginRegister />} />
+              <Route path="/newsignup" element={<NewSignUp />} />
               <Route path="registration" element={<Registration />} />
               <Route path="submit" element={<SubmitRegistration />} />
               <Route path="edit" element={<EditRegistration />} />

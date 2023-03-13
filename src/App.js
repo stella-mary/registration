@@ -1,11 +1,16 @@
 import './App.css';
-import Registration from './components/Registration'
-import SubmitRegistration from './components/SubmitRegistration'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import SignIn from './components/SignIn';
+import Home from './components/Home';
+import SignUp from './components/SignUp';
+import EventList from './components/EventList';
+import AddNewEvent from './components/AddNewEvent';
+import RegistrationList from './components/RegistrationList'
 import EditRegistration from './components/EditRegistration';
-import LoginRegister from './components/LoginRegister';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Login from './components/Login';
-import NewSignUp from './components/NewSignUp';
+import NewRegistration from './components/NewRegistration';
+import EditEvent from './components/EditEvent';
+import NavBar from "./components/NavBar";
+import RegistrationTable from './components/RegistrationTable'
 
 
 
@@ -15,18 +20,28 @@ function App() {
     <div className="App">
       <div className='outer'>
         <div className='inner'>
-          <BrowserRouter>
+          <Router>
+            <NavBar />
             <Routes>
-              <Route path="/" element={<Login />} />
-              <Route path="/newsignup" element={<NewSignUp />} />
-              <Route path="registration" element={<Registration />} />
-              <Route path="submit" element={<SubmitRegistration />} />
-              <Route path="edit" element={<EditRegistration />} />
+              <Route path="/" element={<Home />} />
+              <Route path="SignIn" element={<SignIn />} />
+              <Route path="SignUp" element={<SignUp />} />
+              <Route path="EventList" element={<EventList />} />
+              <Route path="AddNewEvent" element={<AddNewEvent />} />
+              <Route path="EditEvent" element={<EditEvent />} />
+              <Route path="RegistrationList" element={<RegistrationList />} />
+              <Route path="NewRegistration" element={<NewRegistration />} />
+              <Route path="EditRegistration" element={<EditRegistration />} />
+              <Route path="RegistrationTable" element={<RegistrationTable />} />
+
+
             </Routes>
-          </BrowserRouter>
+
+          </Router>
         </div >
       </div>
-    </div>
+      {/* <SignInSignUp /> */}
+    </div >
   );
 }
 

@@ -199,7 +199,7 @@ h1{
 
 .SubmitRegister{
     margin-top: 40px;
-    background: lightgray;
+    background: #a7bcff;
     border:none;
     padding: 10px;
     outline: none;
@@ -207,15 +207,28 @@ h1{
     cursor: pointer;
 }
 
-.SubmitRegister:hover{
-    background-color: gray;
+img{
+    margin-bottom: 30px;
 }
 
-input{
-    /* outline: none; */
-    border-radius: 8px;
-    /* border: none; */
-    padding: 10px;
+.SubmitRegister:hover{
+    background-color: #7c92d5;
+}
+
+input {
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    width: 250px;
+    border: 1px solid #a7bcff;
+}
+
+select {
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    width: 280px;
+    border: 1px solid #a7bcff;
 }
 
 @media screen and (max-width: 700px){

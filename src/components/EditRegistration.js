@@ -7,7 +7,7 @@ export default function EditRegistration() {
 
     const navigate = useNavigate()
     const [searchParam] = useSearchParams();
-    const idToEdit = searchParam.get("editRegister");
+    const idToEdit = searchParam.get("register");
     const [idToUpdate, setIdToUpdate] = useState();
     const [name, setName] = useState();
     const [email, setEmail] = useState();
@@ -21,8 +21,8 @@ export default function EditRegistration() {
         e.preventDefault()
         console.log("Update Id" + idToEdit)
         axios
-            .put("http://localhost:2023/registration/", {
-                Id: parseInt(idToEdit),
+            .put("http://localhost:2024/register/", {
+                registerId: parseInt(idToEdit),
                 Name: name,
                 Email: email,
                 MobileNumber: mobileNumber,
@@ -32,15 +32,20 @@ export default function EditRegistration() {
                 OfferThis: offerThis
             })
             .then((response) => {
-                console.log("Update" + response);
-                navigate("/submit")
+                console.log("Update Response" + JSON.stringify(response));
+                axios.get(`http://localhost:2024/register/eventId/${idToEdit}`).then((response) => {
+                    console.log("get ProfileId response" + JSON.stringify(response))
+                    navigate(`/registrationTable?event=${response.data.eventId}`)
+                });
             });
 
     }
 
+
     useEffect(() => {
-        axios.get(`http://localhost:2023/registration/${idToEdit}`).then((response) => {
+        axios.get(`http://localhost:2024/register/${idToEdit}`).then((response) => {
             // setIdToUpdate(response.data.Id)
+            console.log("useeffect response" + JSON.stringify(response))
             setName(response.data.Name);
             setEmail(response.data.Email);
             setMobileNumber(response.data.MobileNumber);
@@ -51,9 +56,46 @@ export default function EditRegistration() {
         });
     }, []);
 
-    useEffect(() => {
-        // getAllRegister();
-    }, []);
+    // useEffect(() => {
+    //     // getAllRegister();
+    // }, []);
+
+    // const handleUpdate = (e) => {
+    //     e.preventDefault()
+    //     console.log("Update Id" + idToEdit)
+    //     axios
+    //         .put("http://localhost:2024/register/", {
+    //             registerId: parseInt(idToEdit),
+    //             Name: name,
+    //             Email: email,
+    //             MobileNumber: mobileNumber,
+    //             Profession: profession,
+    //             Company: company,
+    //             LookingFor: lookingFor,
+    //             OfferThis: offerThis
+    //         })
+    //         .then((response) => {
+    //             console.log("Update Response" + JSON.stringify(response));
+    //             axios.get(`http://localhost:2024/register/eventId/${idToEdit}`).then((response) => {
+    //                 console.log("get ProfileId response" + JSON.stringify(response))
+    //                 navigate(`/registrationtable?profile=${response.data.profileId}`)
+    //             });
+    //         })
+    // }
+
+    // useEffect(() => {
+    //     axios.get(`http://localhost:2024/register/${idToEdit}`).then((response) => {
+    //         // setIdToUpdate(response.data.Id)
+    //         console.log("useeffect response" + JSON.stringify(response))
+    //         setName(response.data.Name);
+    //         setEmail(response.data.Email);
+    //         setMobileNumber(response.data.MobileNumber);
+    //         setProfession(response.data.Profession);
+    //         setCompany(response.data.Company);
+    //         setLookingFor(response.data.LookingFor);
+    //         setOfferThis(response.data.OfferThis);
+    //     });
+    // }, []);
 
 
     return (

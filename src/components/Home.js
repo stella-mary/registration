@@ -1,18 +1,22 @@
-import register from '../img/register.png';
+import home from '../img/home.svg';
 import { Stack, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 const Home = (props) => {
     return (
-        <>
+        <div className="formContainer1">
             <Stack alignItems="center">
-                <img src={register} height="200px" alt="register image" />
-                Transport illustrations by Storyset
-                <Button component={Link} to="students" variant="contained" size="large">
-                    go to students dashboard
+
+                <img src={home} height="200px" alt="register image" />
+
+                <Button component={Link}>
+                    {/* <button type='submit' className="btn solid">Sign in</button> */}
+                    <Link to="/signup">
+                        <button className="btn solid">Go to Login</button>
+                    </Link>
                 </Button>
             </Stack>
-        </>
+        </div>
 
     );
 };
